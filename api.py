@@ -8,10 +8,13 @@ node = FastAPI()
 chain = BlockChain()
 
 
+minerAddress = "0x00123456789"
+
+
 class Transaction(BaseModel):
     frm: str
     to: str
-    amount: int
+    amount: float
 
 
 @node.get("/")
@@ -29,3 +32,20 @@ def transaction(trans: Transaction):
     print(f"AMOUNT:\t{trans.amount}")
 
     return {"msg": "Transaction submission successfull"}
+
+
+@node.get("/mine")
+def mine():
+    newBlock = chain.create_block(minerAddress)
+
+    return newBlock.json()
+
+
+@node.get("/chain")
+def seeChain():
+    return chain.json()
+
+
+@node.get("/pending")
+def pending_transactions():
+    return {"pending": chain.transactions}
