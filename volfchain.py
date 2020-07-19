@@ -1,5 +1,6 @@
-from datetime import datetime
 import hashlib as hasher
+import json
+from datetime import datetime
 
 
 class Block:
@@ -41,6 +42,10 @@ class BlockChain:
 
     def create_genesis_block(self):
         return Block(0, datetime.now(), "Genesis Block", "0x0")
+
+    def addTransaction(self, transJson: str):
+        transaction = json.loads(transJson)
+        self.transactions.append(transaction)
 
     def __str__(self):
         return "\n".join([str(x) for x in self.blocks])
