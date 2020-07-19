@@ -1,12 +1,11 @@
-from volfchain import Block, BlockChain
-
 from fastapi import FastAPI, Request
 from pydantic import BaseModel
+
+from volfchain import Block, BlockChain
 
 node = FastAPI()
 
 chain = BlockChain()
-
 
 minerAddress = "0x00123456789"
 

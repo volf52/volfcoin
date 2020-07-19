@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 class Block:
-    def __init__(self, idx: int, tsmp: datetime, data: any, prevhash: str):
+    def __init__(self, idx: int, tsmp: datetime, data, prevhash: str):
         self.idx = idx
         self.timestamp = tsmp
         self.data = data
